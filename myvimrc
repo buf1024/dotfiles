@@ -1,0 +1,52 @@
+set nocompatible
+
+set mouse=
+
+let &termencoding=&encoding
+set fileencodings=ucs-bom,utf-8,gbk,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+set clipboard+=unnamedplus
+
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'fatih/vim-go'
+
+
+call vundle#end()
+filetype plugin indent on
+
+nnoremap <F6> :NERDTreeToggle<CR>
+nnoremap <F7> :TagbarToggle<CR>
+
+syntax on
+
+colorscheme desert
+
+set tags=./**/tags,./../tags,./../../tags
+
+set expandtab
+set ts=4
+set sw=4
+set nu
+
+set completeopt=longest
+
+let mapleader="."
+
+"YCM
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_key_invoke_completion = '<leader>.'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_goto_buffer_command = 'horizontal-split'
+let g:ycm_disable_for_files_larger_than_kb = 0
+
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
